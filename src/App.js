@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {messaging} from './firebase/firebase'
 
 function App() {
   return (
