@@ -1,5 +1,4 @@
 const functions = require('firebase-functions');
-const functions = require('firebase-functions');
 const admin= require('firebase-admin')
 const appOptions = JSON.parse(process.env.FIREBASE_CONFIG);
 const app = admin.initializeApp(appOptions);
