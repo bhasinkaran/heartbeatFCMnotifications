@@ -13,6 +13,9 @@ function RegisterNotification() {
     if(userid){
 
       console.log("WE GOT A USER")
+      if(Notification.permission=='granted'){
+        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+      }
       messaging.requestPermission()
       .then(function () {
         console.log('have permission');
@@ -20,7 +23,7 @@ function RegisterNotification() {
       })
       .then(function (token) {
         dbUsers.child(userid).child('token').set(token)
-        window.location.assign()
+        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
       })
       .catch(function (err) {
         console.log(err);
@@ -38,16 +41,17 @@ function RegisterNotification() {
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <p>
-                Edit <code>src/App.js</code> and save to reload.
+                {/* Edit <code>src/App.js</code> and save to reload. */}
+                Please allow notifications, so you can know when someone chats with you!
               </p>
-              <a
+              {/* <a
                 className="App-link"
                 href="https://reactjs.org"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Learn React
-              </a>
+              </a> */}
             </header>
           </div>
         );
