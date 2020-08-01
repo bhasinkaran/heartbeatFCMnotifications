@@ -21,7 +21,7 @@ function RegisterNotification() {
 
         }
         ).catch(err=>console.log(err));
-        // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
       }
       messaging.requestPermission()
       .then(function () {
@@ -31,7 +31,7 @@ function RegisterNotification() {
       .then(function (token) {
         console.log("Stored following token", token);
         dbUsers.child(userid).child('token').set(token)
-        // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
       })
       .catch(function (err) {
         console.log(err);
@@ -50,7 +50,7 @@ function RegisterNotification() {
               <img src={logo} className="App-logo" alt="logo" />
               <p>
                 {/* Edit <code>src/App.js</code> and save to reload. */}
-                Please allow notifications, so you can know when someone chats with you!
+                Please allow notifications, so you can know when someone chats with you! Click on the lock sign on the left of the url if you don't see a popup!
               </p>
               {/* <a
                 className="App-link"
