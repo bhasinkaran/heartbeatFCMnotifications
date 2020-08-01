@@ -16,12 +16,14 @@ function RegisterNotification() {
         messaging.getToken().then((token)=>
         {
           console.log("Stored following token", token);
-          dbUsers.child(userid).child('token').set(token)
+          dbUsers.child(userid).child('token').set(token).then(          
+            // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+          )
           dbUsers.child(userid).child("seentoken").set(true);
+
 
         }
         ).catch(err=>console.log(err));
-        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
       }
       messaging.requestPermission()
       .then(function () {
@@ -30,8 +32,10 @@ function RegisterNotification() {
       })
       .then(function (token) {
         console.log("Stored following token", token);
-        dbUsers.child(userid).child('token').set(token)
-        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+        dbUsers.child(userid).child('token').set(token).then(
+          // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+
+        )
       })
       .catch(function (err) {
         console.log(err);
