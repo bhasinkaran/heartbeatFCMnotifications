@@ -11,19 +11,27 @@ function RegisterNotification() {
     console.log("WE AIN't GOT A USER")
 
     if(userid){
-
       console.log("WE GOT A USER")
       if(Notification.permission=='granted'){
-        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+        messaging.getToken().then((token)=>
+        {
+          console.log("Stored following token", token);
+          dbUsers.child(userid).child('token').set(token)
+          dbUsers.child(userid).child("seentoken").set(true);
+
+        }
+        ).catch(err=>console.log(err));
+        // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
       }
       messaging.requestPermission()
       .then(function () {
         console.log('have permission');
-        return messaging.getToken();
+        return messaging.getToken()
       })
       .then(function (token) {
+        console.log("Stored following token", token);
         dbUsers.child(userid).child('token').set(token)
-        window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+        // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
       })
       .catch(function (err) {
         console.log(err);
