@@ -1,8 +1,8 @@
-importScripts('https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/3.4.0/firebase-messaging.js');
-const configg =require('./configure.js')
+importScripts('/__/firebase/7.17.1/firebase-app.js');
+importScripts('/__/firebase/7.17.1/firebase-messaging.js');
+// import config from './configure.js'
 const firebaseConfig = {
-        apiKey: configg,
+        apiKey: 'AIzaSyCpM-5_mw366JiwTsC6yaNeuK3leQbQrlI',
         authDomain: "nearify-f2a4a.firebaseapp.com",
         databaseURL: "https://nearify-f2a4a.firebaseio.com",
         projectId: "nearify-f2a4a",

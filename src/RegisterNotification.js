@@ -17,7 +17,7 @@ function RegisterNotification() {
         {
           console.log("Stored following token", token);
           dbUsers.child(userid).child('token').set(token).then(          
-            // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+            window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
           )
           dbUsers.child(userid).child("seentoken").set(true);
 
@@ -33,7 +33,7 @@ function RegisterNotification() {
       .then(function (token) {
         console.log("Stored following token", token);
         dbUsers.child(userid).child('token').set(token).then(
-          // window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+          window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
 
         )
       })
