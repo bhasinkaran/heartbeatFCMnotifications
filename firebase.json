@@ -9,6 +9,7 @@
   },
   "hosting": {
     "public": "build",
+    "site": "heartbeatnotifications",
     "ignore": [
       "firebase.json",
       "**/.*",

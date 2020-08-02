@@ -5,6 +5,13 @@ import logo from './logo.svg';
 import './App.css';
 function RegisterNotification() { 
  const {userid, access_token, refresh_token} =useParams();
+ const[token, setToken] = React.useState("");
+ useEffect(()=>{
+  if(token!=""){
+    console.log("token")
+    window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+  }
+ },[token])
  useEffect(handleToken, [userid]);
 
   function handleToken(){
@@ -16,9 +23,14 @@ function RegisterNotification() {
         messaging.getToken().then((token)=>
         {
           console.log("Stored following token", token);
-          dbUsers.child(userid).child('token').set(token).then(          
+          dbUsers.child(userid).child('token').set(token, function(err){
+            if(err){
+              console.log(err);
+            }
+            else{
             window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
-          )
+            }
+          })
           dbUsers.child(userid).child("seentoken").set(true);
 
 
@@ -32,10 +44,15 @@ function RegisterNotification() {
       })
       .then(function (token) {
         console.log("Stored following token", token);
-        dbUsers.child(userid).child('token').set(token).then(
+        dbUsers.child(userid).child('token').set(token, function(err){
+          if(err){
+            console.log(err);
+          }
+          else{
           window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
 
-        )
+          }
+        })
       })
       .catch(function (err) {
         console.log(err);
