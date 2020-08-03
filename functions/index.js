@@ -17,7 +17,7 @@ exports.sendNotifications = functions.database.ref('/messages/{messageid}').onWr
         var sendername;
         // app.database().ref('/users')
         const after = event.after;
-        console.log(after);
+        // console.log(after);
         const NOTIFICATION_SNAPSHOT = after.val();
         const chatid = after.val().chatid;
         let name = ""
@@ -27,8 +27,9 @@ exports.sendNotifications = functions.database.ref('/messages/{messageid}').onWr
                 let id = after.val().senderid
                 return axios.get(`https://pure-harbor-26317.herokuapp.com/users/${id}`)
                         .then(response => {
-                                console.log(response.data);
-                                name=response.data.fname;
+                                // console.log(response.data);
+                                name=response.data[0].fname;
+                                // console.log(name);
                                 const payload = {
                                         notification: {
                                                 title: `New Message from ${name}`,
