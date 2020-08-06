@@ -21,35 +21,59 @@
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/login/dating",
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/callback",
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/callback/dating",
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/refresh_token",
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/users/add",
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/dating/add",
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/users/",
         "function":"app"
       },
       {
-        "source":"/test",
+        "source":"/users/:id",
+        "function":"app"
+      },
+      {
+        "source":"/users/signup/:id",
+        "function":"app"
+      },
+      {
+        "source":"/signup/:id/2/",
+        "function":"app"
+      },
+      {
+        "source":"/addartist/:id/:artistid",
+        "function":"app"
+      },
+      {
+        "source":"/addsong/:id/:songid",
+        "function":"app"
+      },
+      {
+        "source":"/addpost/:id/:postid",
+        "function":"app"
+      },
+      {
+        "source":"/addpost/:id/:image_url",
         "function":"app"
       },
       {
