@@ -188,15 +188,16 @@ app.get('/callback/dating', function(req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 // state === null || state !== storedState
-  if (false) {
-    console.log(state);
-    console.log(req);
-    console.log(req.cookies);
-    res.redirect('/#' +
-      querystring.stringify({
-        error: 'state_mismatch'
-      }));
-  } else {
+  // if (false) {
+  //   console.log(state);
+  //   console.log(req);
+  //   console.log(req.cookies);
+  //   res.redirect('/#' +
+  //     querystring.stringify({
+  //       error: 'state_mismatch'
+  //     }));
+  // } 
+  // else {
     res.clearCookie(stateKey);
     var authOptions = {
       url: 'https://accounts.spotify.com/api/token',
@@ -235,16 +236,17 @@ app.get('/callback/dating', function(req, res) {
           access_token: access_token,
           refresh_token: refresh_token,
         }));
-    } else {
-      console.log(response.statusCode);
-      console.log(response)
-      res.redirect('/#' +
-        querystring.stringify({
-          error: 'invalid_token'
-        }));
-    }
+    } 
+    // else {
+    //   console.log(response.statusCode);
+    //   console.log(response)
+    //   res.redirect('/#' +
+    //     querystring.stringify({
+    //       error: 'invalid_token'
+    //     }));
+    // }
   });
-}
+// }
 });
 
 

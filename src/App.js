@@ -27,7 +27,8 @@ import NoMatchModal from './dating_components/EdgeCaseModals/NoMatchModal';
 import NoMessagesModal from './dating_components/EdgeCaseModals/NoMessageModal';
 import ChatsHomepage from './dating_components/ChatsHomepage';
 import RegisterNotification from './RegisterNotification'
-const s = new Spotify();
+import { red } from '@material-ui/core/colors';
+// const s = new Spotify();
 
 export const InfoContext = React.createContext();
 function App() {
@@ -95,7 +96,7 @@ function App() {
     }
     
   }, []);
-  var redirectUri= process.env.NODE_ENV == 'production' ? `https://pure-harbor-26317.herokuapp.com/users/` : `http://localhost:8888/users/`
+  var redirectUri= process.env.NODE_ENV == 'production' ? `https://pure-harbor-26317.herokuapp.com/users/` : `http://localhost:5000/users/`
   useEffect( handleData, [user]);
   function handleData(){
   axios.get(`${redirectUri}`)
@@ -215,9 +216,14 @@ function App() {
     <BrowserRouter>
       <InfoContext.Provider value={{activeItem, setActiveItem, nomatchmodal, setNoMatchModal,nomessagemodal, setNoMessagesModal, replies, users, allusers, attractedUsers,orderedAttracted, setReplies, artists, setArtists, messages, setMessages, songs, setSongs,posts, setPosts, likes, setLikes, user, setUser, chats,visible, setVisible, accesstoken, setAccesToken, refreshtoken, setRefreshToken}}>
         {/* NEARIFY ROUTES */}
-        <Route exact path="/signup/:id/:access_token/:refresh_token" render={()=> <Signup />} />
+        <Route exact path="/signup/:id/:access_token/:refresh_token" render={()=> <div>
+            <div>renders
+            </div>
+            <Signup /> 
+          </div>} />
         {/* <Route exact path="/" render={()=><Login />} /> */}
-        <Route exact path="/" render={()=><Redirect to='/dating' />} />
+        <Route exact path="/" render={()=>  <div>renders
+            </div> } />
 
         <Route exact path="/settings" render={()=>withMenu(<SettingsPage />)} />
         
@@ -232,7 +238,7 @@ function App() {
         {/* <Route exact path="/artist/:artistid/:bool"  render = {()=> <ArtistPage ></ArtistPage>} /> */}
 
         <Route exact path="/map" render={()=><MapLeaflet />} />
-        <Route exact path="/signup/:userid/:access_token/:refresh_token" render={()=> <RegisterNotification />} />
+        <Route exact path="/signupnotifications/:userid/:access_token/:refresh_token" render={()=> <RegisterNotification />} />
 
 
 

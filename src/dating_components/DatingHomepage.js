@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
-import _ from 'lodash'
+// import _ from 'lodash'
 import React, { useState, useEffect, useContext } from 'react';
 import { Container, Search, Grid } from 'semantic-ui-react'
 import { Router, useParams, Link } from 'react-router-dom';
@@ -13,13 +13,13 @@ import ReturnPreview from './PreviewComponents/ReturnPreview'
 import { Button } from 'semantic-ui-react'
 import { InfoContext } from '../App'
 import { dbUsers } from '../firebase/firebase';
-import firebase from '../firebase/firebase'
-// import firebase, { messaging } from 'firebase/app';
-import {messaging} from '../firebase/firebase'
-import 'firebase/database';
-import apiKey from '../firebase/api-Key';
-import 'firebase/storage'
-import 'firebase/messaging'
+// import firebase from '../firebase/firebase'
+// // import firebase, { messaging } from 'firebase/app';
+// import {messaging} from '../firebase/firebase'
+// import 'firebase/database';
+// import apiKey from '../firebase/api-Key';
+// import 'firebase/storage'
+// import 'firebase/messaging'
 
 const mongoose = require('mongoose');
 const s = new Spotify();
@@ -132,7 +132,7 @@ const DatingHomePageFeed = () => {
       console.log(users);
     console.log(user);
     // console.log(users[user.id]['token']);
-    return(window.location.assign(`https://heartbeatnotifications.web.app/signup/${user.id}/${access_token}/${refresh_token}`));
+    return(window.location.assign(`https://heartbeathub.web.app/signupnotifications/${user.id}/${access_token}/${refresh_token}`));
   
     }
     

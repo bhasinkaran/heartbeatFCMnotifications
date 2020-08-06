@@ -9,7 +9,7 @@ function RegisterNotification() {
  useEffect(()=>{
   if(token!=""){
     console.log("token")
-    window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+    window.location.assign(`https://heartbeathub.web.app/dating/home/${userid}/${access_token}/${refresh_token}`)
   }
  },[token])
  useEffect(handleToken, [userid]);
@@ -28,7 +28,7 @@ function RegisterNotification() {
               console.log(err);
             }
             else{
-            window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+            window.location.assign(`https://heartbeathub.web.app/dating/home/${userid}/${access_token}/${refresh_token}`)
             }
           })
           dbUsers.child(userid).child("seentoken").set(true);
@@ -49,7 +49,7 @@ function RegisterNotification() {
             console.log(err);
           }
           else{
-          window.location.assign(`https://pure-harbor-26317.herokuapp.com/dating/home/${userid}/${access_token}/${refresh_token}`)
+          window.location.assign(`https://heartbeathub.web.app/dating/home/${userid}/${access_token}/${refresh_token}`)
 
           }
         })
@@ -62,7 +62,7 @@ function RegisterNotification() {
       console.log('onmessage', payload);
     })
     }
-    
+
   }
 
         return (
