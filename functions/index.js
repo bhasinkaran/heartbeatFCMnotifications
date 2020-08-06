@@ -1,5 +1,18 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin')
+
+// const firebaseConfig = {
+//         apiKey: functions.config,
+//         authDomain: "nearify-f2a4a.firebaseapp.com",
+//         databaseURL: "https://nearify-f2a4a.firebaseio.com",
+//         projectId: "nearify-f2a4a",
+//         storageBucket: "nearify-f2a4a.appspot.com",
+//         messagingSenderId: "442855937718",
+//         appId: "1:442855937718:web:f1f6b7b42ca928efec3817",
+//         measurementId: "G-HV3MDELM9K"
+// };
+require('dotenv').config();
+
 const appOptions = JSON.parse(process.env.FIREBASE_CONFIG);
 const app2 = admin.initializeApp(appOptions);
 const axios = require('axios')
@@ -11,9 +24,8 @@ var cors =  require('cors');
 var querystring = require('querystring');
 var cookieParser=require('cookie-parser');
 const mongoose = require('mongoose')
-require('dotenv').config();
 // const isDev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 8888;
+const port = 5000;
 let User = require('./models/user.model');
 
 // // Create and Deploy Your First Cloud Functions
@@ -24,9 +36,9 @@ let User = require('./models/user.model');
 // });
 var client_id = '75dfedc5f2d847e7bfad7f2da2f9c611'; // Your client id
 var client_secret =  process.env.NODE_ENV === 'production' ? process.env.SECRETKEY : configg;
-var redirect_uri = process.env.PORT ? `https://pure-harbor-26317.herokuapp.com/callback` : `http://localhost:8888/callback`; // Your redirect uri
+var redirect_uri = process.env.PORT ? `https://heartbeathub.web.app/callback/` : `http://localhost:5000/callback`; // Your redirect uri
 
-var redirect_uri_dating = process.env.PORT ? `https://pure-harbor-26317.herokuapp.com/callback/dating` : `http://localhost:8888/callback/dating`; // Your redirect uri
+var redirect_uri_dating = process.env.PORT ? `https://heartbeathub.web.app/callback/dating` : `http://localhost:5000/callback/dating`; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -91,6 +103,7 @@ app.get('/login/dating', function(req, res) {
 
   // your application requests authorization
   var scope = 'user-read-private user-read-email user-read-playback-state user-top-read user-library-read';
+  console.log(redirect_uri_dating)
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -148,7 +161,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        var redirectable=process.env.PORT ? 'http://pure-harbor-26317.herokuapp.com/users/add/?': 'http://localhost:8888/users/add/?';
+        var redirectable=process.env.PORT ? 'https://heartbeathub.web.app/users/add/?': 'http://localhost:5000/users/add/?';
         res.redirect(redirectable +
         querystring.stringify({
           access_token: access_token,
@@ -174,8 +187,11 @@ app.get('/callback/dating', function(req, res) {
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
-
-  if (state === null || state !== storedState) {
+// state === null || state !== storedState
+  if (false) {
+    console.log(state);
+    console.log(req);
+    console.log(req.cookies);
     res.redirect('/#' +
       querystring.stringify({
         error: 'state_mismatch'
@@ -213,7 +229,7 @@ app.get('/callback/dating', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        var redirectable=process.env.PORT ? 'http://pure-harbor-26317.herokuapp.com/users/dating/add/?': 'http://localhost:8888/users/dating/add/?';
+        var redirectable=process.env.PORT ? 'http://heartbeathub.web.app/users/dating/add/?': 'http://localhost:5000/users/dating/add/?';
         res.redirect(redirectable +
         querystring.stringify({
           access_token: access_token,
@@ -268,6 +284,18 @@ app.get('/test/api', function (req, res) {
 
 const userRouter=require('./routes/users');
 app.use('/users', userRouter);
+
+
+
+
+
+//  THE BELOW APP.LISTEN IS ONLY FOR LOCAL DEVELOPMENT.
+app.listen(port, function(port){console.log("listening on"+port)});
+
+
+
+
+
 
 exports.app = functions.https.onRequest(app);
 

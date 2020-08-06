@@ -56,7 +56,7 @@ export default function SignInSide() {
   const [nonSpotify, setNonSpotify] = useState(false);
 
   const classes = useStyles();
-  var redirectableLogin= process.env.NODE_ENV === 'production' ? `https://pure-harbor-26317.herokuapp.com/login/dating` : `http://localhost:8888/login/dating`;
+  var redirectableLogin= process.env.NODE_ENV === 'production' ? `https://heartbeathub.web.app/login/dating` : `http://localhost:5000/login/dating`;
   var redirectableSignup = process.env.NODE_ENV === 'production' ? `https://pure-harbor-26317.herokuapp.com/nonspotify/signup` : `http://localhost:3000/nonspotify/signup`;
   return (
     <Grid container component="main" className={classes.root}>
