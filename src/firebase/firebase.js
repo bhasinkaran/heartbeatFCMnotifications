@@ -4,15 +4,16 @@ import apiKey from './api-Key';
 import 'firebase/storage'
 import 'firebase/messaging'
 
+
 const firebaseConfig = {
         apiKey: apiKey,
-        authDomain: "heartbeat-53205.firebaseapp.com",
-        databaseURL: "https://heartbeat-53205.firebaseio.com",
-        projectId: "heartbeat-53205",
-        storageBucket: "heartbeat-53205.appspot.com",
-        messagingSenderId: "1065325778110",
-        appId: "1:1065325778110:web:391aa9a182da3f130b3aef",
-        measurementId: "G-C7MQE9QDKE"
+        authDomain: "nearify-f2a4a.firebaseapp.com",
+        databaseURL: "https://nearify-f2a4a.firebaseio.com",
+        projectId: "nearify-f2a4a",
+        storageBucket: "nearify-f2a4a.appspot.com",
+        messagingSenderId: "442855937718",
+        appId: "1:442855937718:web:f1f6b7b42ca928efec3817",
+        measurementId: "G-HV3MDELM9K"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -34,10 +35,10 @@ const messages = firebase.messaging();
 //         console.log('onmessage',payload);
 // })
 export default storage;
-export const messaging = messages;
+export const messaging= messages;
 export const dbArtists = firebase.database().ref().child('artists');
 export const dbUsers = firebase.database().ref().child('users');
-export const dbSongs = firebase.database().ref().child('songs');
+export const dbSongs  = firebase.database().ref().child('songs');
 export const dbPosts = firebase.database().ref().child('posts');
 export const dbMessages = firebase.database().ref().child('messages');
 export const dbReplies = firebase.database().ref().child('replies');
