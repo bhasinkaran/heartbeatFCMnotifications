@@ -9,7 +9,7 @@
   },
   "hosting": {
     "public": "build",
-    "site": "heartbeatnotifications",
+    "site":"heartbeathub",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -17,12 +17,48 @@
     ],
     "rewrites": [
       {
+        "source":"/timestamp",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
+        "source":"/test",
+        "function":"app"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
     ]
   },
   "storage": {
-    "rules": "y"
+    "rules": "storage.rules"
   }
 }
